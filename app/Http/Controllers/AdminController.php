@@ -37,4 +37,11 @@ class AdminController extends Controller
     }
     
 }
+public function Logout(){
+
+    return redirect()->route('login_form')->with('error','Logout sucessfully');
+}
+
+
+
 }

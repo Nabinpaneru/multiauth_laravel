@@ -7,6 +7,7 @@ use Auth;
 use Hash;
 class AdminController extends Controller
 {
+   
     public function Index(){
 
         return view('admin.admin_login');
@@ -37,11 +38,14 @@ class AdminController extends Controller
     }
     
 }
-public function Logout(){
-
-    return redirect()->route('login_form')->with('error','Logout sucessfully');
+public function Logout(Request $request)
+{
+    Auth::logout();
+ 
+    $request->session()->invalidate();
+ 
+    $request->session()->regenerateToken();
+return redirect()->route('login_form')->with('error','Logout sucessfully');
 }
-
-
 
 }
